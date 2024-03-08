@@ -18,6 +18,8 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
 public class JwtFilter {
+	
+	//secret for creating secret key
 	private String secret = "dsjbviuahviufahdvblfvbuiafbvlnvbsbdvliHASUVHSABHUHFIUeshfilghwiuvhviubdsvuin";
 	private Long expirationDate = 30*60*60*1000l;
 	
@@ -35,6 +37,7 @@ public class JwtFilter {
 				.signWith(getSigningKey(), SignatureAlgorithm.HS256).compact();
 	}
 	
+	//creating secret key
 	public Key getSigningKey() {
 		byte[] keyBytes = Decoders.BASE64.decode(secret);
 		return Keys.hmacShaKeyFor(keyBytes);
